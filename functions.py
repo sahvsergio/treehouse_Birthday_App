@@ -7,12 +7,20 @@ def upcoming_birthdays(people_list, days):
     # Template:
     # PERSON turns AGE in X days on MONTH DAY
     # PERSON turns AGE in X days on MONTH DAY
-    print("Upcoming Birthdays function")
-    print(people_list)
-    pass
+    for person in people_list:
+        format_string = '%Y-%m-%d'
+        birthday_dt = datetime.datetime.strptime(person['birthday'], format_string)
+        now=datetime.datetime.now()
+        birthday_this_year=birthdate_dt.replace(year=now.year)
+        difference = birthday_this_year-now
+        turning_age=relativedelta.relative_delta(now, birthday_dt).years+1
+        
+        if 0< difference.days()<days:
+            print(f'{person['name']} turns {turning_age} in {difference.days} days on {birthday_dt.strftime('%B &d')}')
 
 
 def display_age(person):
+    
     # TODO: write code to display the age of person
     # Template:
   
